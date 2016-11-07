@@ -1,6 +1,6 @@
 class CreateImagems < ActiveRecord::Migration[5.0]
   def change
-    create_table :imagems do |t|
+    create_table :imagens do |t|
       t.string :nome
       t.attachment :arquivo
 

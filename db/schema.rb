@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161107140154) do
     t.index ["imagem_id"], name: "index_comprovantes_on_imagem_id", using: :btree
   end
 
-  create_table "imagems", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "imagens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nome"
     t.string   "arquivo_file_name"
     t.string   "arquivo_content_type"
@@ -37,5 +37,5 @@ ActiveRecord::Schema.define(version: 20161107140154) do
     t.datetime "updated_at",           null: false
   end
 
-  add_foreign_key "comprovantes", "imagems"
+  add_foreign_key "comprovantes", "imagens"
 end
