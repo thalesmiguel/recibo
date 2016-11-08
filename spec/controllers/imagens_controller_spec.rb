@@ -14,7 +14,7 @@ RSpec.describe ImagensController, type: :controller do
 
   describe "GET #index" do
     it "assigns all imagens as @imagens" do
-      imagem = FactoryGirl.create(:imagem)
+      imagem = Imagem.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(assigns(:imagens)).to eq([imagem])
     end
@@ -22,7 +22,7 @@ RSpec.describe ImagensController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested imagem as @imagem" do
-      imagem = FactoryGirl.create(:imagem)
+      imagem = Imagem.create! valid_attributes
       get :show, params: {id: imagem.to_param}, session: valid_session
       expect(assigns(:imagem)).to eq(imagem)
     end
@@ -37,7 +37,7 @@ RSpec.describe ImagensController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested imagem as @imagem" do
-      imagem = FactoryGirl.create(:imagem)
+      imagem = Imagem.create! valid_attributes
       get :edit, params: {id: imagem.to_param}, session: valid_session
       expect(assigns(:imagem)).to eq(imagem)
     end
@@ -78,21 +78,25 @@ RSpec.describe ImagensController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:imagem) { FactoryGirl.create(:imagem) }
-      let(:dados_validos) { FactoryGirl.attributes_for(:imagem, nome: 'Novo Nome') }
+      let(:new_attributes) {
+        FactoryGirl.attributes_for(:imagem, nome: 'Novo Nome')
+      }
 
       it "updates the requested imagem" do
-        put :update, params: { id: imagem.id, imagem: dados_validos, session: valid_session }
+        imagem = Imagem.create! valid_attributes
+        put :update, params: {id: imagem.to_param, imagem: new_attributes}, session: valid_session
         imagem.reload
         expect(imagem.nome).to eq('Novo Nome')
       end
 
       it "assigns the requested imagem as @imagem" do
+        imagem = Imagem.create! valid_attributes
         put :update, params: {id: imagem.to_param, imagem: valid_attributes}, session: valid_session
         expect(assigns(:imagem)).to eq(imagem)
       end
 
       it "redirects to the imagem" do
+        imagem = Imagem.create! valid_attributes
         put :update, params: {id: imagem.to_param, imagem: valid_attributes}, session: valid_session
         expect(response).to redirect_to(imagem)
       end

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="valign-wrapper">
+    <div class="col s6 valign">
+      <h1>Usuários</h1>
+    </div>
+    <div class="col s6 valign right-align">
+      <%= link_to 'Novo', new_imagem_path %>
+    </div>
+  </div>
+</div>
+
+
+<table class="bordered highlight">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Arquivo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @imagens.each do |imagem| %>
+      <tr>
+        <td><%= imagem.nome %></td>
+        <td><%= imagem.arquivo %></td>
+        <td>
+          <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_imagem_path(imagem) %>
+          <%= link_to '<i class="material-icons">delete</i>'.html_safe, imagem, method: :delete, data: { confirm: 'Tem certeza?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

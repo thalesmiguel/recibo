@@ -1,0 +1,1 @@
+json.array! @comprovantes, partial: 'comprovantes/comprovante', as: :comprovante

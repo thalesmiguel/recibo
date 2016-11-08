@@ -1,0 +1,30 @@
+<a class="btn-floating btn-floating-top btn-large waves-effect waves-light secondary-color"><i class="material-icons">add</i></a>
+
+<%= link_to new_comprovante_path, class: 'btn-floating btn-floating-top btn-large waves-effect waves-light secondary-color', remote: true do %>
+  <i class="small material-icons">add</i>
+<% end %>
+
+<div id="comprovante_modal" class="modal bottom-sheet modal-grande"></div>
+
+<h1>Comprovantes</h1>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+  <% @comprovantes.each do |comprovante| %>
+    <li class="m-b-10">
+      <div class="collapsible-header p-l-0">
+        <div class="collapsible-itens p-l-15">
+          <ul>
+            <li class="left m-w-25"><%= comprovante.nome %></li>
+            <li class="left"><%= comprovante.descricao_tratada %></li>
+            <li class="right"><%= comprovante.valor %></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="collapsible-body">
+        <%= render 'form', comprovante: comprovante %>
+      </div>
+    </li>
+  <% end %>
+</ul>

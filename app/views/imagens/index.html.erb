@@ -1,25 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="valign-wrapper">
+    <div class="col s6 valign">
+      <h1>Imagens</h1>
+    </div>
+    <div class="col s6 valign right-align">
+      <%= link_to 'Novo', new_imagem_path %>
+    </div>
+  </div>
 
-<h1>Imagens</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @imagens.each do |imagem| %>
-      <tr>
-        <td><%= link_to 'Show', imagem %></td>
-        <td><%= link_to 'Edit', edit_imagem_path(imagem) %></td>
-        <td><%= link_to 'Destroy', imagem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+      <div class="col s3">
+        <div class="card sticky-action">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag imagem.arquivo.url, class: 'imagem-media' %>
+          </div>
+          <div class="card-content">
+            <span class="card-title grey-text text-darken-4">
+              <%= imagem.nome %>
+            </span>
+          </div>
+          <div class="card-action">
+            <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_imagem_path(imagem) %>
+            <%= link_to '<i class="material-icons">delete</i>'.html_safe, imagem, method: :delete, data: { confirm: 'Tem certeza?' } %>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          </div>
+        </div>
+      </div>
+
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Imagem', new_imagem_path %>
+</div>

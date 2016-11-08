@@ -1,0 +1,4 @@
+$("#comprovante_modal").html("<%= escape_javascript(render partial: 'form', locals: { comprovante: @comprovante } ) %>");
+
+$('#comprovante_modal').openModal();
+$('select').material_select();
