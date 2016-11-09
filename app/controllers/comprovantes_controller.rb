@@ -1,12 +1,9 @@
 class ComprovantesController < ApplicationController
-  before_action :set_comprovante, only: [:show, :edit, :update, :destroy]
+  before_action :set_comprovante, only: [:update, :destroy]
 
   def index
     @imagens = Imagem.all
     @comprovantes = Comprovante.all
-  end
-
-  def show
   end
 
   def new
@@ -15,27 +12,26 @@ class ComprovantesController < ApplicationController
     mostra_modal
   end
 
-  def edit
-  end
-
   def create
+    @imagens = Imagem.all
     @comprovante = Comprovante.new(comprovante_params)
 
     respond_to do |format|
       if @comprovante.save
-        format.js { render file: 'comprovantes/sucesso.js.erb', locals: { notice: 'Compravante criado com sucesso.' } }
+        format.js { render file: 'ajax/application/crud.js.erb', locals: { notice: 'Comprovante criado com sucesso.', obj: @comprovante, acao: action_name } }
       else
-        format.js { render file: 'comprovantes/falha.js.erb' }
+        format.js { render file: 'ajax/application/crud.js.erb', locals: { obj: @comprovante } }
       end
     end
   end
 
   def update
+    @imagens = Imagem.all
     respond_to do |format|
       if @comprovante.update(comprovante_params)
-        format.js { render file: 'comprovantes/sucesso.js.erb', locals: { notice: 'Compravante alterado com sucesso.' } }
+        format.js { render file: 'ajax/application/crud.js.erb', locals: { notice: 'Comprovante alterado com sucesso.', obj: @comprovante, acao: action_name } }
       else
-        format.js { render file: 'comprovantes/falha.js.erb' }
+        format.js { render file: 'ajax/application/crud.js.erb', locals: { obj: @comprovante } }
       end
     end
   end
@@ -43,15 +39,14 @@ class ComprovantesController < ApplicationController
   def destroy
     @comprovante.destroy
     respond_to do |format|
-      format.html { redirect_to comprovantes_url, notice: 'Comprovante was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { render file: 'ajax/application/crud.js.erb', locals: { notice: 'Comprovante excluído com sucesso.', obj: @comprovante, acao: action_name } }
     end
   end
 
   private
       def mostra_modal
       respond_to do |format|
-        format.js { render file: "comprovantes/mostra_modal.js.erb" }
+        format.js { render file: "ajax/comprovantes/mostra_modal.js.erb" }
       end
     end
 

@@ -23,17 +23,9 @@ RSpec.describe ComprovantesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    it "assigns the requested comprovante as @comprovante" do
-      comprovante = Comprovante.create! valid_attributes
-      get :show, params: {id: comprovante.to_param}, session: valid_session
-      expect(assigns(:comprovante)).to eq(comprovante)
-    end
-  end
-
   describe "GET #new" do
     it "assigns a new comprovante as @comprovante" do
-      get :new, params: {}, session: valid_session
+      get :new, xhr: true, params: {}, session: valid_session
       expect(assigns(:comprovante)).to be_a_new(Comprovante)
     end
   end
@@ -41,7 +33,7 @@ RSpec.describe ComprovantesController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested comprovante as @comprovante" do
       comprovante = Comprovante.create! valid_attributes
-      get :edit, params: {id: comprovante.to_param}, session: valid_session
+      get :edit, xhr: true, params: {id: comprovante.to_param}, session: valid_session
       expect(assigns(:comprovante)).to eq(comprovante)
     end
   end
@@ -50,31 +42,31 @@ RSpec.describe ComprovantesController, type: :controller do
     context "with valid params" do
       it "creates a new Comprovante" do
         expect {
-          post :create, params: {comprovante: valid_attributes}, session: valid_session
+          post :create, xhr: true, params: {comprovante: valid_attributes}, session: valid_session
         }.to change(Comprovante, :count).by(1)
       end
 
       it "assigns a newly created comprovante as @comprovante" do
-        post :create, params: {comprovante: valid_attributes}, session: valid_session
+        post :create, xhr: true, params: {comprovante: valid_attributes}, session: valid_session
         expect(assigns(:comprovante)).to be_a(Comprovante)
         expect(assigns(:comprovante)).to be_persisted
       end
 
-      it "redirects to the created comprovante" do
-        post :create, params: {comprovante: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Comprovante.last)
+      it "renderiza novo comprovante" do
+        post :create, xhr: true, params: {comprovante: valid_attributes}, session: valid_session
+        expect(response).to render_template("ajax/application/toast.js.erb")
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved comprovante as @comprovante" do
-        post :create, params: {comprovante: invalid_attributes}, session: valid_session
+        post :create, xhr: true, params: {comprovante: invalid_attributes}, session: valid_session
         expect(assigns(:comprovante)).to be_a_new(Comprovante)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, params: {comprovante: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
+      it "renderiza mensagem de erro" do
+        post :create, xhr: true, params: {comprovante: invalid_attributes}, session: valid_session
+        expect(response).to render_template("ajax/application/toast.js.erb")
       end
     end
   end
@@ -87,35 +79,35 @@ RSpec.describe ComprovantesController, type: :controller do
 
       it "updates the requested comprovante" do
         comprovante = Comprovante.create! valid_attributes
-        put :update, params: {id: comprovante.to_param, comprovante: new_attributes}, session: valid_session
+        put :update, xhr: true, params: {id: comprovante.to_param, comprovante: new_attributes}, session: valid_session
         comprovante.reload
         expect(comprovante.nome).to eq("Novo nome")
       end
 
       it "assigns the requested comprovante as @comprovante" do
         comprovante = Comprovante.create! valid_attributes
-        put :update, params: {id: comprovante.to_param, comprovante: valid_attributes}, session: valid_session
+        put :update, xhr: true, params: {id: comprovante.to_param, comprovante: valid_attributes}, session: valid_session
         expect(assigns(:comprovante)).to eq(comprovante)
       end
 
-      it "redirects to the comprovante" do
+      it "renderiza alterações do comprovante" do
         comprovante = Comprovante.create! valid_attributes
-        put :update, params: {id: comprovante.to_param, comprovante: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(comprovante)
+        put :update, xhr: true, params: {id: comprovante.to_param, comprovante: valid_attributes}, session: valid_session
+        expect(response).to render_template("ajax/application/toast.js.erb")
       end
     end
 
     context "with invalid params" do
       it "assigns the comprovante as @comprovante" do
         comprovante = Comprovante.create! valid_attributes
-        put :update, params: {id: comprovante.to_param, comprovante: invalid_attributes}, session: valid_session
+        put :update, xhr: true, params: {id: comprovante.to_param, comprovante: invalid_attributes}, session: valid_session
         expect(assigns(:comprovante)).to eq(comprovante)
       end
 
-      it "re-renders the 'edit' template" do
+      it "renderiza mensagem de erro" do
         comprovante = Comprovante.create! valid_attributes
-        put :update, params: {id: comprovante.to_param, comprovante: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
+        put :update, xhr: true, params: {id: comprovante.to_param, comprovante: invalid_attributes}, session: valid_session
+        expect(response).to render_template("ajax/application/toast.js.erb")
       end
     end
   end

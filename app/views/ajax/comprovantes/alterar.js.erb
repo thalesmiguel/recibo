@@ -1,0 +1,8 @@
+elemento = $("#comprovante_<%= obj.id %>");
+elemento.find(".collapsible-header").click();
+
+setTimeout(function(){
+  elemento.replaceWith("<%= escape_javascript(render file: 'comprovantes/_comprovante.html.erb', locals: { comprovante: obj }) %>");
+  $('select').material_select();
+  valida_formulario();
+}, 300)

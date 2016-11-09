@@ -1,0 +1,8 @@
+elemento = $("#collapsible_comprovante");
+$('#comprovante_modal').closeModal();
+console.log('<%= obj %>')
+setTimeout(function(){
+  elemento.prepend("<%= escape_javascript(render file: 'comprovantes/_comprovante.html.erb', locals: { comprovante: obj }) %>");
+  $('select').material_select();
+  valida_formulario();
+}, 300)

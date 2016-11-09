@@ -7,6 +7,8 @@ class Comprovante < ApplicationRecord
   validates :assinatura, presence: true
   validates :valor, presence: true
 
+  monetize :valor_centavos
+
   def descricao_tratada
     descricao[0..40].gsub(/\s\w+\s*$/,'...')
   end

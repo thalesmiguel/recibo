@@ -14,16 +14,17 @@ ActiveRecord::Schema.define(version: 20161107140154) do
 
   create_table "comprovantes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nome"
-    t.text     "descricao",  limit: 65535
+    t.text     "descricao",      limit: 65535
     t.string   "cidade"
     t.date     "data"
     t.string   "assinatura"
     t.string   "cpf"
     t.string   "rg"
-    t.decimal  "valor",                    precision: 10
+    t.integer  "valor_centavos",               default: 0,     null: false
+    t.string   "valor_currency",               default: "BRL", null: false
     t.integer  "imagem_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.index ["imagem_id"], name: "index_comprovantes_on_imagem_id", using: :btree
   end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'comrpovantes#index'
+  root to: 'comprovantes#index'
 
   resources :imagens
   resources :comprovantes

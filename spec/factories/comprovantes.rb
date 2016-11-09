@@ -7,7 +7,7 @@ FactoryGirl.define do
     assinatura "MyString"
     cpf "MyString"
     rg "MyString"
-    valor "9.99"
+    valor "9,99"
     imagem nil
   end
 end

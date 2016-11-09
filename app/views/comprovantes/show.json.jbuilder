@@ -1,1 +1,0 @@
-json.partial! "comprovantes/comprovante", comprovante: @comprovante

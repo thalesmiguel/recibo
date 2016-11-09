@@ -1,0 +1,6 @@
+elemento = $("#comprovante_<%= obj.id %>");
+elemento.find(".collapsible-header").click();
+
+setTimeout(function(){
+  elemento.remove();
+}, 300)
