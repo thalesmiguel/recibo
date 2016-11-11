@@ -580,6 +580,7 @@ input[type="date"] {
 
 .collapsible-header{
   border-left: 5px solid $secondary-color;
+  transition: background-color .25s;
 }
 
 .collapsible-body {
@@ -593,7 +594,6 @@ input[type="date"] {
 .secondary-color-lighten-3 {
   background: lighten( $secondary-color, 30% ) !important;
 }
-
 
 .btn-floating-top {
   right: 5em;
@@ -613,9 +613,14 @@ i.medium {
   font-size: 4rem !important;
 }
 
+a {
+  transition: color .25s !important;
+}
+
 a.disabled {
   color: rgba(0, 0, 0, 0.26);
   cursor: default;
+  transition: color .25s;
 }
 
 nav ul a.disabled:hover {

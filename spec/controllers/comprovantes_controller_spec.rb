@@ -30,14 +30,6 @@ RSpec.describe ComprovantesController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "assigns the requested comprovante as @comprovante" do
-      comprovante = Comprovante.create! valid_attributes
-      get :edit, xhr: true, params: {id: comprovante.to_param}, session: valid_session
-      expect(assigns(:comprovante)).to eq(comprovante)
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Comprovante" do
@@ -54,7 +46,7 @@ RSpec.describe ComprovantesController, type: :controller do
 
       it "renderiza novo comprovante" do
         post :create, xhr: true, params: {comprovante: valid_attributes}, session: valid_session
-        expect(response).to render_template("ajax/application/toast.js.erb")
+        expect(response).to render_template("ajax/application/crud.js.erb")
       end
     end
 
@@ -66,7 +58,7 @@ RSpec.describe ComprovantesController, type: :controller do
 
       it "renderiza mensagem de erro" do
         post :create, xhr: true, params: {comprovante: invalid_attributes}, session: valid_session
-        expect(response).to render_template("ajax/application/toast.js.erb")
+        expect(response).to render_template("ajax/application/crud.js.erb")
       end
     end
   end
@@ -93,7 +85,7 @@ RSpec.describe ComprovantesController, type: :controller do
       it "renderiza alterações do comprovante" do
         comprovante = Comprovante.create! valid_attributes
         put :update, xhr: true, params: {id: comprovante.to_param, comprovante: valid_attributes}, session: valid_session
-        expect(response).to render_template("ajax/application/toast.js.erb")
+        expect(response).to render_template("ajax/application/crud.js.erb")
       end
     end
 
@@ -107,7 +99,7 @@ RSpec.describe ComprovantesController, type: :controller do
       it "renderiza mensagem de erro" do
         comprovante = Comprovante.create! valid_attributes
         put :update, xhr: true, params: {id: comprovante.to_param, comprovante: invalid_attributes}, session: valid_session
-        expect(response).to render_template("ajax/application/toast.js.erb")
+        expect(response).to render_template("ajax/application/crud.js.erb")
       end
     end
   end
@@ -116,14 +108,14 @@ RSpec.describe ComprovantesController, type: :controller do
     it "destroys the requested comprovante" do
       comprovante = Comprovante.create! valid_attributes
       expect {
-        delete :destroy, params: {id: comprovante.to_param}, session: valid_session
+        delete :destroy, xhr: true, params: {id: comprovante.to_param}, session: valid_session
       }.to change(Comprovante, :count).by(-1)
     end
 
     it "redirects to the comprovantes list" do
       comprovante = Comprovante.create! valid_attributes
-      delete :destroy, params: {id: comprovante.to_param}, session: valid_session
-      expect(response).to redirect_to(comprovantes_url)
+      delete :destroy, xhr: true, params: {id: comprovante.to_param}, session: valid_session
+      expect(response).to render_template("ajax/application/crud.js.erb")
     end
   end
 

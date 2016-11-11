@@ -7,8 +7,10 @@ $(document).on('click', "input[id^='comprovante_id_']", function(){
 
   if ($("input[id^='comprovante_id_']:checked").length > 0) {
     $('#btn-imprimir').removeClass('disabled')
+    $('#btn-imprimir').addClass('waves-effect')
   } else {
     $('#btn-imprimir').addClass('disabled')
+    $('#btn-imprimir').removeClass('waves-effect')
   }
 })
 

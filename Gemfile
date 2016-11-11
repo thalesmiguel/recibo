@@ -37,7 +37,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.3'
 gem 'money-rails'
 
-
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

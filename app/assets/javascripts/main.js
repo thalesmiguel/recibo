@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function(){
   // $('.modal-trigger').leanModal();
   $('select').material_select();
+  $('.collapsible').collapsible();
   // $(".button-collapse").sideNav();
   // $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
