@@ -4,15 +4,15 @@ $secondary-color: color("green", "lighten-1") !default;
 // $input-focus-color: $primary-color !default;
 // Predefined Break-points
 
-$mediaMaxWidth: 1260px;
-$mediaBp1Width: 960px;
-$mediaMinWidth: 480px;
+$mediaMaxWidth: 1440px;
+$mediaBp1Width: 1260px;
+$mediaMinWidth: 960px;
 
 @import 'materialize';
 
 @media only screen and (min-width: $mediaMinWidth){
   html {
-      font-size: 8px !important;
+    font-size: 8px !important;
   }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 100px !important;
@@ -22,21 +22,29 @@ $mediaMinWidth: 480px;
 
 @media only screen and (min-width: $mediaBp1Width){
   html {
-      font-size: 11px !important;
+    font-size: 11px !important;
   }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 50px !important;
     line-height: 50px !important;
   }
+  footer.page-footer .footer-copyright {
+    height: 30px;
+    line-height: 30px;
+  }
 }
 
 @media only screen and (min-width: $mediaMaxWidth){
   html {
-      font-size: 14px !important;
+    font-size: 14px !important;
   }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px !important;
     line-height: 64px !important;
+  }
+  footer.page-footer .footer-copyright {
+    height: 50px;
+    line-height: 50px;
   }
 }
 
@@ -60,6 +68,14 @@ body {
 
 .modal {
   overflow: visible;
+}
+
+label, h1 {
+  cursor: default !important;
+}
+
+input[type="date"] {
+  cursor: text !important;
 }
 
 /*Padding & Margin*/
@@ -574,6 +590,11 @@ body {
   background: $secondary-color !important;
 }
 
+.secondary-color-lighten-3 {
+  background: lighten( $secondary-color, 30% ) !important;
+}
+
+
 .btn-floating-top {
   right: 5em;
   top: 2.6em;
@@ -590,4 +611,14 @@ i.small {
 
 i.medium {
   font-size: 4rem !important;
+}
+
+a.disabled {
+  color: rgba(0, 0, 0, 0.26);
+  cursor: default;
+}
+
+nav ul a.disabled:hover {
+  background-color: initial;
+  pointer-events: none;
 }

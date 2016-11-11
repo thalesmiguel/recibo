@@ -1,0 +1,18 @@
+<%#= params.inspect %>
+
+<%#= params[:comprovante] %>
+
+<% bozo = [] %>
+<%#= params[:comprovante]['id'] %>
+<% params[:comprovante]['id'].each do |recibo| %>
+  <% bozo << recibo  %>
+<% end %>
+<%= bozo %>
+
+
+<br>
+<br>
+
+<% @comprovantes.each do |comprovante| %>
+  <%= comprovante.nome %>
+<% end %>

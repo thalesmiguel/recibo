@@ -8,7 +8,7 @@ class CreateComprovantes < ActiveRecord::Migration[5.0]
       t.string :assinatura
       t.string :cpf
       t.string :rg
-      t.money :valor
+      t.money :valor, limit: 8 
       t.references :imagem, foreign_key: true
 
       t.timestamps

@@ -1,7 +1,11 @@
-<li id="comprovante_<%= comprovante.id %>" class="m-b-10">
+<li id="comprovante_<%= comprovante.id %>">
   <div class="collapsible-header p-l-0">
     <div class="collapsible-itens p-l-15">
       <ul>
+        <li class="left m-w-8">
+          <%= check_box_tag "comprovante[id][#{comprovante.id}]", comprovante.id, false, form:"imprime_recibos", class: 'filled-in' %>
+          <%= label_tag "comprovante[id][#{comprovante.id}]", '‌‌ ' %>
+        </li>
         <li class="left m-w-8"><%=l comprovante.data %></li>
         <li class="left m-w-25"><%= comprovante.nome %></li>
         <li class="left"><%= comprovante.descricao_tratada %></li>

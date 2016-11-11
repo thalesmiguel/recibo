@@ -2,6 +2,25 @@
   <div class="nav-wrapper">
     <%= link_to "Recibo<span class='smaller'>Central</span>".html_safe, root_path, class:"brand-logo p-l-15" %>
 
+    <ul class="right">
+      <%# if usuario_signed_in? %>
+        <li>
+          <a rel="nofollow" data-method="delete" href="/usuarios/sign_out">Sair</a>
+           <%#= link_to('Sair', destroy_usuario_session_path, :method => :delete) %>
+         </li>
+      <%# end %>
+    </ul>
+
+    <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><%= link_to '<i class="material-icons">add</i>'.html_safe, new_comprovante_path, remote:true, class:"waves-effect" %></li>
+      <li>
+        <%= form_tag(imprimir_comprovantes_path, method: :get, target: "_blank", format: "pdf", id: "imprime_recibos") do %>
+          <a id='btn-imprimir' class='disabled' href='#' onclick='this.parentNode.submit(); return false;'><i class="material-icons">print</i></a>
+        <% end %>
+      </li>
+    <ul/>
+
     <!-- <%# if usuario_signed_in? %>
 
       <ul class="right">

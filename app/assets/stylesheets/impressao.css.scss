@@ -1,0 +1,47 @@
+@import "materialize/components/color";
+@import "materialize/components/variables";
+@import "materialize/components/global";
+@import "materialize/components/grid";
+@import "materialize/components/typography";
+
+div.alwaysbreak { page-break-before: always; }
+div.nobreak:before { clear:both; }
+div.nobreak { page-break-inside: avoid; }
+
+.bold {
+  font-weight: bold;
+}
+
+.row .col.pull-s01 {
+  right: 6.33333%;
+}
+
+.corpo-com-bordas {
+  min-height: 30em;
+  min-width: 30em;
+  border: 1px solid;
+  margin-bottom: 2em;
+}
+
+.assinatura {
+  border: 1px solid;
+  border-top: 3px solid;
+  background: #f5f5f5;
+  margin-top: 3em !important;
+}
+
+.valor {
+  border: 1px solid;
+  background: #f5f5f5;
+  margin-top: 0.7em;
+}
+
+.valor-extenso {
+  border: 1px solid;
+  background: #f5f5f5;
+  text-transform: uppercase;
+}
+
+.imagem {
+  margin-top: 0.7em;
+}

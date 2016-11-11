@@ -1,0 +1,57 @@
+<% @comprovantes.each do |comprovante| %>
+  <div class="corpo-com-bordas nobreak">
+    <div class="row">
+      <div class="col s4 left-align imagem">
+        <%= wicked_pdf_image_tag comprovante.imagem.arquivo.url, class: 'imagem-media', width: '90px', height: '90px'  %>
+      </div>
+      <div class="col s4 center-align">
+        <h4>R E C I B O</h4>
+      </div>
+      <div class="col s3 offset-s1 bold center-align valor">
+        <%= comprovante.valor.format %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s3 bold">
+        Recebemos de
+      </div>
+      <div class="col s9 pull-s01">
+        <%= comprovante.nome %>
+      </div>
+
+      <div class="col s3 bold">
+        A importancia de
+      </div>
+      <div class="col s9 pull-s01 valor-extenso">
+        <%= comprovante.valor %>
+      </div>
+
+      <div class="col s12 bold">
+        Proveniente de
+      </div>
+      <div class="col s12">
+        <%= comprovante.descricao %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 right-align">
+        <%= comprovante.cidade %>, <%=l comprovante.data, format: :long %>
+      </div>
+      <div class="col s6 push-s6 center-align assinatura">
+        <%= comprovante.assinatura %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s3 offset-s6">
+         <%= 'CPF:' + comprovante.cpf if comprovante.cpf? %>
+      </div>
+      <div class="col s3">
+         <%= 'RG:' + comprovante.rg if comprovante.rg? %>
+      </div>
+    </div>
+
+  </div>
+<% end %>
