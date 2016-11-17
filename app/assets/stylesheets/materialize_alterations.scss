@@ -1,9 +1,10 @@
 @import "materialize/components/color";
 $primary-color: color("amber", "darken-3") !default;
-$secondary-color: color("green", "lighten-1") !default;
+$secondary-color: color("light-blue", " darken-3") !default;
+// $secondary-color: color("green", "lighten-1") !default;
 // $input-focus-color: $primary-color !default;
-// Predefined Break-points
 
+// Predefined Break-points
 $mediaMaxWidth: 1440px;
 $mediaBp1Width: 1260px;
 $mediaMinWidth: 960px;

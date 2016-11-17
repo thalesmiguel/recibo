@@ -16,12 +16,12 @@
             <%= f.label :imagem_id %>
           </div>
 
-          <div class="input-field col s12">
+          <div class="input-field col s12 m5">
             <%= f.text_field :nome %>
             <%= f.label 'Recebemos de', class: "active"%>
           </div>
 
-          <div class="input-field col s12">
+          <div class="input-field col s12 m4">
             <%= f.text_field :valor, onClick:"this.select();" %>
             <%= f.label 'A importância de', class: "active" %>
           </div>
@@ -58,7 +58,7 @@
 
         </div>
       </div>
-      <div class="card-action p-l-20 p-r-20">
+      <div class="card-action">
         <%= button_tag "Salvar", class:"btn waves-effect waves-light" %>
         <%= button_tag "Cancelar", class:"btn-flat waves-effect waves-light btn-cancelar", type: :reset %>
 

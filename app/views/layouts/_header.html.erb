@@ -15,7 +15,7 @@
     <ul class="right hide-on-med-and-down">
       <li><%= link_to '<i class="material-icons">add</i>'.html_safe, new_comprovante_path, remote:true, class:"waves-effect" %></li>
       <li>
-        <%= form_tag(imprimir_comprovantes_path, method: :get, target: "_blank", format: "pdf", id: "imprime_recibos") do %>
+        <%= form_tag(imprimir_comprovantes_path(), method: :get, target: "_blank", id: "imprime_recibos") do %>
           <a id='btn-imprimir' class='disabled' href='#' onclick='this.parentNode.submit(); return false;'><i class="material-icons">print</i></a>
         <% end %>
       </li>
