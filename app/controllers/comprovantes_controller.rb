@@ -36,11 +36,7 @@ class ComprovantesController < ApplicationController
   end
 
   def imprimir
-    comprovantes = []
-    params[:comprovante]['id'].each do |comprovante|
-      comprovantes << comprovante
-    end
-    @comprovantes = Comprovante.where(:id => comprovantes)
+    @comprovantes = Comprovante.where(:id => params[:comprovante_ids])
 
     respond_to do |format|
       format.pdf do

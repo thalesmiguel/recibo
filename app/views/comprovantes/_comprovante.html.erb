@@ -3,8 +3,8 @@
     <div class="collapsible-itens p-l-15">
       <ul>
         <li class="left m-w-8">
-          <%= check_box_tag "comprovante[id][#{comprovante.id}]", comprovante.id, false, form:"imprime_recibos", class: 'filled-in' %>
-          <%= label_tag "comprovante[id][#{comprovante.id}]", '‌‌ ' %>
+          <%= check_box_tag "comprovante#{comprovante.id}", comprovante.id, false, name: 'comprovante_ids[]', class: 'filled-in', form:"imprime_recibos" %>
+          <%= label_tag "comprovante#{comprovante.id}", '‌‌ ' %>
         </li>
         <li class="left m-w-8"><%=l comprovante.data %></li>
         <li class="left m-w-25"><%= comprovante.nome %></li>
