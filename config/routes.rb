@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :imagens
 
   resources :comprovantes, only: [:index, :new, :create, :update, :destroy] do
-    get 'imprimir', to: 'comprovantes#imprimir', defaults: {format: :pdf}, on: :collection
+    post 'imprimir', to: 'comprovantes#imprimir', defaults: {format: :pdf}, on: :collection
   end
 
 end
