@@ -2,7 +2,7 @@ $(document).on('click', '.btn-cancelar', function(){
   $('#comprovante_modal').closeModal();
 })
 
-$(document).on('click', "input[id^='comprovante']", function(){
+$(document).on('click', "input[id^='comprovante_id']", function(){
   $(this).parent().parent().parent().parent().toggleClass('secondary-color-lighten-3');
 
   if ($("input[id^='comprovante']:checked").length > 0) {
