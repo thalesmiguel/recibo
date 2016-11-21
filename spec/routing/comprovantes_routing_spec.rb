@@ -28,7 +28,7 @@ RSpec.describe ComprovantesController, type: :routing do
     end
 
     it 'routes to #imprimir' do
-      expect(:get => "/comprovantes/imprimir").to route_to("comprovantes#imprimir", format: :pdf)
+      expect(:post => "/comprovantes/imprimir").to route_to("comprovantes#imprimir", format: :pdf)
     end
 
   end

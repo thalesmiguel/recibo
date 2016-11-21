@@ -2,6 +2,8 @@ $(document).on('turbolinks:load', function(){
   // $('.modal-trigger').leanModal();
   $('select').material_select();
   $('.collapsible').collapsible();
+  $(".dropdown-button").dropdown();
+
 
   $(document).ajaxStart(function() { Pace.restart(); });
   // $(".button-collapse").sideNav();
